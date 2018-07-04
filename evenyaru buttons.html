@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+			<meta name="description" content="food blog">
+		<meta name="keywords" content="food blog,">
+		<meta name="author" content="Lior Shapira ליאור שפירא">
+		<meta name="viewpoint" content="width=device-width,initial scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <title> אבן, נייר ומספריים </title>
+
+        <style> 
+            body {color:ghostwhite;
+            background-size: cover;
+            font-family:'Alef',sans-serif;
+            }
+            
+            #board {
+            position: absolute;
+            z-index: 15;
+            top: 25%;
+            left: 25%;  
+            background-image:url('board.jpg');
+            width:50%;
+            margin:0 auto;
+            background-size: cover;
+            }
+            
+            #popup {
+            position: fixed;
+            z-index: 16;
+            top: 25%;
+            left: 33%;  
+            background-image:url('board.jpg');
+            width:33%;
+            margin:0 auto;
+            background-size: cover;
+            padding: 20px;
+            padding-right: 50px;
+            }
+        </style>
+                             
+	</head>
+    
+	<body dir="rtl" ng-app="" style="background-image: url('bg.jpg');">
+        
+         <div id="popup"> 
+            <h3 style="text-align: center;"> דברים רבים מוטלים על כף המאזניים </h3> <br/>
+           האויבת הנצחית שלך, שושנה "פח-מסריח" צימנפלד, <br/>
+             איתגרה אותך למשחק "אבניירו" פומבי מול כל הכיתה <br/> 
+             להוכיח אחת ולתמיד מי משתיכן טובה יותר. <br/>
+             על כף המאזניים מונח הכבוד שלך. <br/>
+             האם תוותרי לשושנה, או שתנצחי ותהפכי למלכת האבניירו של השכבה?     <br/>
+             <br/>
+           <center> <button id="shosh">תראי לשושנה מה זה!</button>  </center>
+            <br/>
+        </div>
+        
+        <div id="board">
+            <center>
+       <h1 style="color:white;"> אבן, נייר ומספריים</h1>
+        <button Onclick="even()"> אבן </button> 
+        <button Onclick="niyar()"> נייר </button>
+        <button Onclick="misparayim()"> מספריים </button>
+            <p id="rps"> אבניירו מספריים המנצח בין השתיים אחת שתיים שלוש </p>
+                </center>
+        </div>
+        
+        <script>
+          $(document).ready(function() {
+                 setTimeout(function(){$("#popup").css("display","block")}, "slow",1000)
+                
+                $($("button")[0]).click(function(){
+                 $("#popup").css("display","none")   
+                });
+              });
+            
+            
+            var set2 = ["אבן", "נייר", "מספריים",];                  
+            var player2 = Math.floor(Math.random()*set2.length);
+  
+            function even() {
+                document.getElementById("rps").innerHTML="אבניירומספריים המנצח בין השתיים" + "<br/>" + "אחת שתיים שלוש!"
+                 setTimeout(function(){ 
+                        var player2 = Math.floor(Math.random()*set2.length);
+                    if (set2[player2] == "אבן") {
+                        document.getElementById("rps").innerHTML =  "שתיכן עשיתן אבן. שוב." + "<br/>" + " ";
+                    } else if (set2[player2] == "נייר") {
+                      document.getElementById("rps").innerHTML = "שושנה עשתה נייר. " + "<br/>"  + "שושנה ניצחה ואת עוזבת בוכה." + "<br/>" + "רגע לפני שאת נושרת מהלימודים, בואי נעמיד פנים שזה לא קרה." + "<br/>" + "משחק חוזר?";
+                    } else {
+                      document.getElementById("rps").innerHTML = " שושנה עשתה מספריים. " + "<br/>" + "ניצחת את שושנה! את מלכת האבניירו הבלתי מעורערת של הכיתה!"; 
+                       }
+                },  1500);
+                }
+                       
+            function niyar()  {  
+                document.getElementById("rps").innerHTML="אבניירומספריים המנצח בין השתיים" + "<br/>" + "אחת שתיים שלוש!"
+                setTimeout(function(){ 
+                    var player2 = Math.floor(Math.random()*set2.length);
+                    if (set2[player2] == "נייר") {
+                        document.getElementById("rps").innerHTML = "שתיכן עשיתן נייר. שוב." + "<br/>" + " ";
+                    } else if (set2[player2] == "אבן") {
+                      document.getElementById("rps").innerHTML = "שושנה עשתה מספריים. " + "<br/>"  + "שושנה ניצחה ואת עוזבת בוכה." + "<br/>" + "רגע לפני שאת נושרת מהלימודים, בואי נעמיד פנים שזה לא קרה." + "<br/>" + "משחק חוזר?";
+                    } else {
+                      document.getElementById("rps").innerHTML = "שושנה עשתה אבן. " + "<br/>" + "ניצחת את שושנה! את מלכת האבניירו הבלתי מעורערת של הכיתה!"; 
+                       }
+                },  1500);
+                }
+                 
+               
+            function misparayim(){  
+                document.getElementById("rps").innerHTML="אבניירומספריים המנצח בין השתיים" + "<br/>" + "אחת שתיים שלוש!"
+                setTimeout(function(){ 
+                    var player2 = Math.floor(Math.random()*set2.length);
+                    if (set2[player2] == "מספריים") {
+                        document.getElementById("rps").innerHTML = "שתיכן עשיתן מספריים. שוב." + "<br/>" + " ";
+                    } else if (set2[player2] == "אבן") {
+                      document.getElementById("rps").innerHTML = "שושנה עשתה אבן. " + "<br/>" + "שושנה ניצחה ואת עוזבת בוכה." + "<br/>" + "רגע לפני שאת נושרת מהלימודים, בואי נעמיד פנים שזה לא קרה." + "<br/>" + "משחק חוזר?";
+                    } else {
+                      document.getElementById("rps").innerHTML = "שושנה עשתה נייר. " + "<br/>" + "ניצחת את שושנה! את מלכת האבניירו הבלתי מעורערת של הכיתה!"; 
+                       }
+                },  1500);
+                }
+                 
+                            
+        </script>
+    </body>
+    
